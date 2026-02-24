@@ -1,0 +1,223 @@
+:root {
+    --bg-color: #0c0c0e;
+    --accent-color: #ffffff;
+    --text-color: #e0e0e0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition-speed: 0.8s;
+    --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(30,30,35,1) 0%, rgba(12,12,14,1) 100%);
+    z-index: -1;
+}
+
+.app-container {
+    width: 90%;
+    max-width: 1200px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+}
+
+header {
+    text-align: center;
+    animation: fadeInDown 1s var(--easing);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    font-weight: 300;
+    opacity: 0.6;
+    font-size: 1rem;
+}
+
+.slideshow-wrapper {
+    flex: 1;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    background: #000;
+    border: 1px solid var(--glass-border);
+}
+
+.slideshow-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity var(--transition-speed) var(--easing), transform var(--transition-speed) var(--easing);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 24px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.control-btn:hover {
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.1);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+.progress-container {
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    transition: width 0.1s linear;
+}
+
+.thumbnail-strip {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.thumbnail-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.3s, transform 0.3s, border 0.3s;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+}
+
+.thumb.active {
+    opacity: 1;
+    transform: scale(1.15);
+    border-color: #fff;
+}
+
+.thumb:hover {
+    opacity: 0.8;
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.loader {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.5;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}

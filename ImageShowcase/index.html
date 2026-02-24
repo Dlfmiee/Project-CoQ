@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Showcase | Premium Slideshow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <main class="app-container">
+        <header>
+            <h1>Visual Journey</h1>
+            <p>A curated collection of moments</p>
+        </header>
+
+        <section class="slideshow-wrapper">
+            <div class="slideshow-container" id="slideshow">
+                <!-- Images will be injected here by JS -->
+                <div class="loader">Loading Gallery...</div>
+            </div>
+
+            <div class="controls">
+                <button id="prevBtn" class="control-btn" aria-label="Previous Slide">
+                    <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <button id="nextBtn" class="control-btn" aria-label="Next Slide">
+                    <svg viewBox="0 0 24 24" width="24" height="24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <section class="thumbnail-strip" id="thumbnailStrip">
+            <!-- Thumbnails will be injected here -->
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
